@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Canteen Management System</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  
+<section id="loginView" class="login-wrap">
+  <div class="login-card">
+    <div class="logo">🍱</div>
+    <h1>Quản lý Canteen</h1>
+    <p class="muted">Vui lòng chọn vai trò để tiếp tục</p>
+
+    <!-- Chọn vai trò -->
+    <div class="role-selection">
+      <label for="selectedRole">Bạn là:</label>
+      <select id="selectedRole">
+        <option value="CUSTOMER">Khách hàng</option>
+        <option value="STAFF">Nhân viên</option>
+        <option value="MANAGER">Quản lý</option>
+      </select>
+    </div>
+
+    <!-- Form đăng nhập -->
+    <form id="loginForm">
+      <input id="email" type="text"
+             placeholder="Email hoặc số điện thoại" required>
+      <input id="password" type="password"
+             placeholder="Mật khẩu" required>
+      <button type="submit">Đăng nhập</button>
+    </form>
+
+    <p id="loginMsg" class="error"></p>
+
+    <!-- Chỉ khách hàng mới được đăng ký -->
+    <div id="customerRegister">
+      <p>Chưa có tài khoản khách hàng?</p>
+      <button type="button" class="secondary"
+              onclick="showRegister()">
+        Đăng ký tài khoản
+      </button>
+    </div>
+
+    <!-- Form đăng ký khách hàng -->
+    <form id="registerForm" class="hidden">
+      <h3>Đăng ký khách hàng</h3>
+      <input id="regFullName" placeholder="Họ và tên" required>
+      <input id="regEmail" type="email" placeholder="Email" required>
+      <input id="regPhone" placeholder="Số điện thoại" required>
+      <input id="regPassword" type="password"
+             placeholder="Mật khẩu" minlength="6" required>
+      <input id="regConfirmPassword" type="password"
+             placeholder="Nhập lại mật khẩu" required>
+      <button type="submit">Tạo tài khoản</button>
+      <button type="button" class="secondary"
+              onclick="showLoginForm()">
+        Quay lại đăng nhập
+      </button>
+        </form>
+  </div>
+</section> <!-- Đóng loginView -->
+
+<section id="mainView" class="hidden">
+  <aside class="sidebar">
+    <div class="brand">🍱 CANTEEN</div>
+    <div id="userBox" class="user-box"></div>
+    <nav id="nav"></nav>
+    <button class="logout" onclick="logout()">Đăng xuất</button>
+  </aside>
+
+  <main class="content">
+    <header>
+      <h2 id="pageTitle">Tổng quan</h2>
+      <span id="roleBadge"></span>
+    </header>
+    <div id="page"></div>
+  </main>
+</section>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
